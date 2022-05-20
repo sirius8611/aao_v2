@@ -1,0 +1,39 @@
+* {
+  margin: 2px 0px;
+}
+
+body {
+  margin: 40px;
+  text-align: center;
+}
+
+legend {
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.row input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+label[for="comments"] {
+  display: block;
+  text-align: left;
+  margin-left: 1em;
+}
+
+input[type="checkbox"] + label,
+p {
+  font-size: 0.8em;
+  display: block;
+  text-align: left;
+}
+
+input[type="checkbox"] {
+  height: 1.5em;
+}

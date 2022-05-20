@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  justify-content: center;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}

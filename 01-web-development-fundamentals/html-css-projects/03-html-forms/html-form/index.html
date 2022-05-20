@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="layout.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>HTML Forms</title>
+  </head>
+  <body>
+    <div class="container">
+      <form action="/form-handling-url" method="post">
+        <fieldset>
+          <legend>add user</legend>
+          <div class="form-container">
+            <div class="form-body">
+              <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="first_name" />
+              </div>
+
+              <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="last_name" />
+              </div>
+
+              <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email_address" />
+              </div>
+              <div class="row">
+                <div>
+                  <label for="status">Status:</label>
+                  <input type="text" name="status" />
+                </div>
+
+                <div>
+                  <label for="date">Date:</label>
+                  <input type="text" name="date" />
+                </div>
+              </div>
+              <p>Choose your favorite language:</p>
+              <div class="row">
+                <input
+                  type="radio"
+                  id="html-radio"
+                  name="language"
+                  value="html"
+                />
+                <label for="html">HTML</label>
+                <input
+                  type="radio"
+                  id="css-radio"
+                  name="language"
+                  value="css"
+                />
+
+                <label for="css">CSS</label>
+                <input
+                  type="radio"
+                  id="js-radio"
+                  name="language"
+                  value="javascript"
+                />
+                <label for="javascript">JS</label>
+              </div>
+              <div>
+                <label for="comments">Comments:</label>
+                <textarea id="comment" name="comments"></textarea>
+              </div>
+              <div class="row">
+                <div class="row">
+                  <input type="checkbox" id="newsletter" name="newsletter" />
+                  <label for="newsletter">sign up for news</label>
+                </div>
+
+                <div class="row">
+                  <input
+                    type="checkbox"
+                    id="terms-conditions"
+                    name="terms-conditions"
+                  />
+                  <label for="terms-conditions">agree to terms</label>
+                </div>
+              </div>
+
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

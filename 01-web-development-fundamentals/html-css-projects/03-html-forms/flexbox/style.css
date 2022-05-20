@@ -1,0 +1,23 @@
+.full-row,
+.half-row,
+.third-row {
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  font-size: x-small;
+  background-color: #333399;
+  height: 1.5em;
+  margin: 5px 0px;
+}
+
+.full-row {
+  width: 200px;
+}
+
+.half-row {
+  width: 100px;
+}
+
+.third-row {
+  width: 66px;
+}
