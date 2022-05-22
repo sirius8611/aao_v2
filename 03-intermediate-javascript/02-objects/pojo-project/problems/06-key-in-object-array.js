@@ -20,7 +20,9 @@ keyInObjectArray(objArray, 'animal'); // => false
 ***********************************************************************/
 
 function keyInObjectArray(objArray, keyString) {
-  // your code here
+  return objArray.reduce((inArray, currentEl) => {
+    return inArray || Object.keys(currentEl).includes(keyString);
+  }, false);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
