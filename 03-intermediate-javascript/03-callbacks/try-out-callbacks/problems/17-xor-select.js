@@ -31,14 +31,17 @@ console.log(
 // [ 'art', 'app', 'buttery' ]
 *******************************************************************************/
 
-let xorSelect = function() {
-
+let xorSelect = function (array, cb1, cb2) {
+  let xorselected = [];
+  array.forEach((el) => {
+    let ret1 = cb1(el);
+    let ret2 = cb2(el);
+    if ((ret1 && !ret2) || (!ret1 && ret2)) {
+      xorselected.push(el);
+    }
+  });
+  return xorselected;
 };
-
-
-
-
-
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = xorSelect;

@@ -9,6 +9,7 @@ Examples:
 let result1 = one(['x', 'y', 'z'], function(el) {
     return el === 'a';
 });
+
 console.log(result1);   // false
 
 let result2 = one(['x', 'a', 'y', 'z'], function(el) {
@@ -37,14 +38,15 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 console.log(result6);   // true
 *******************************************************************************/
 
-let one = function() {
-
+let one = function (array, cb) {
+  let count = 0;
+  array.forEach((el, idx) => {
+    if (cb(el, idx)) {
+      count++;
+    }
+  });
+  return count === 1;
 };
-
-
-
-
-
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = one;

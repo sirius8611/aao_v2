@@ -27,14 +27,15 @@ console.log(result4); // true
 
 *******************************************************************************/
 
-let exactly = function() {
-
+let exactly = function (array, number, cb) {
+  let count = 0;
+  array.forEach((el) => {
+    if (cb(el)) {
+      count++;
+    }
+  });
+  return count == number;
 };
-
-
-
-
-
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = exactly;

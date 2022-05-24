@@ -28,14 +28,15 @@ console.log(andSelect(['ants', 'APPLES', 'ART', 'BACON', 'arm'], isUpperCase,  s
 
 *******************************************************************************/
 
-let andSelect = function() {
-
+let andSelect = function (array, cb1, cb2) {
+  let andSelect = [];
+  array.forEach((el) => {
+    if (cb1(el) && cb2(el)) {
+      andSelect.push(el);
+    }
+  });
+  return andSelect;
 };
-
-
-
-
-
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = andSelect;
