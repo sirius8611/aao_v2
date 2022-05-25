@@ -44,17 +44,28 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 
 const curriedSum = (numArgs) => {
   let numbers = [];
-  return (num) => {
+
+  const curried = (num) => {
     numbers.push(num);
     if (numbers.length === numArgs) {
-      return numbers.reduce((partialSum, currNum) => {
-        return partialSum + currNum;
+      return numbers.reduce((sum, currNum) => {
+        return sum + currNum;
       }, 0);
+    } else {
+      return curried;
     }
   };
+  return curried;
 };
 
-console.log(curriedSum(3)(2)(1)(7));
+// const sum = curriedSum(4); // returns a function
+// sum(5); // returns a function
+// sum(20); // returns a function
+// sum(30); // returns a function
+// console.log(sum(20)); // => returns 75
+
+const sum = console.log(curriedSum(3)(2)(1)(7)); // => returns 10
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {
