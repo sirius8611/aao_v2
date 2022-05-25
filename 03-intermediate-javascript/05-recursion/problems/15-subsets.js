@@ -14,7 +14,15 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
      subset that is the same, except it also does contain 3.
 ***********************************************************************/
 
-// your code here
+const subsets = (array) => {
+  if (array.length === 0) {
+    return [[]];
+  }
+  let subsArr = subsets(array.slice(0, array.length - 1));
+  let last = array.length - 1;
+
+  return subsArr.concat(subsArr.map((el) => el.concat([array[last]])));
+};
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

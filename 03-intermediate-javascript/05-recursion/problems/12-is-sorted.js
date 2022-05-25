@@ -10,7 +10,17 @@ isSorted([2, 4, 6, 7, 8]); // true
 isSorted([5, 4, 3, 2, 1]); // false
 ***********************************************************************/
 
-// your code here
+const isSorted = (array) => {
+  if (array.length <= 2) {
+    if (array.length === 2) {
+      return array[0] < array[1];
+    } else {
+      return false;
+    }
+  } else {
+    return isSorted([array[0], array[1]]) && isSorted(array.splice(1));
+  }
+};
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -21,8 +21,24 @@ sort([0, 1, -3]); // [-3, 0, 1]
 sort([]); // []
 ***********************************************************************/
 
+function smallestFromArr(array) {
+  return array.reduce((prev, curr) => {
+    if (prev > curr) {
+      return curr;
+    } else {
+      return prev;
+    }
+  });
+}
+
 function sort(nums, sorted = []) {
-  // your code here
+  if (nums.length === 0) {
+    return sorted;
+  }
+  let smallest = smallestFromArr(nums);
+  sorted.push(smallest);
+  nums.splice(nums.indexOf(smallest), 1);
+  return sort(nums, sorted);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

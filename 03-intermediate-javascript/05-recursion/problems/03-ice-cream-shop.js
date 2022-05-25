@@ -12,29 +12,13 @@ iceCreamShop(['moose tracks'], 'moose tracks'); // true
 iceCreamShop([], 'honey lavender'); // false
 ***********************************************************************/
 
-const iceCreamShop = (flavors, favorite) => {};
-
-// console.log(iceCreamShop(["vanilla", "strawberry"], "blue moon")); // false
-// console.log(iceCreamShop(["moose tracks", "strawberry"], "moose tracks")); // true
-console.log(
-  iceCreamShop(
-    ["pistachio", "green tea", "chocolate", "mint chip"],
-    "green tea"
-  )
-); // true
-console.log(
-  iceCreamShop(
-    [
-      "cookies n cream",
-      "blue moon",
-      "superman",
-      "honey lavender",
-      "sea salt caramel",
-    ],
-    "pistachio"
-  )
-); // false
-iceCreamShop([], "honey lavender"); // false
+const iceCreamShop = (flavors, favorite) => {
+  if (flavors.length > 0) {
+    return flavors[0] === favorite || iceCreamShop(flavors.splice(1), favorite);
+  } else {
+    return false;
+  }
+};
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

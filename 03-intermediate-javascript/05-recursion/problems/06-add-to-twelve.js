@@ -12,7 +12,24 @@ addToTwelve([1, 12, 4, 7, 6]); // false
 addToTwelve([1]); // false
 ***********************************************************************/
 
-// your code here
+const addToTwelve = (array) => {
+  // base case is if an array of two elements sums to 12
+  if (array.length <= 2) {
+    if (array.length === 2) {
+      return array[0] + array[1] === 12;
+    } else {
+      return false;
+    }
+  }
+  // return true if first two elements sums to 12
+  if (array[0] + array[1] === 12) {
+    return true;
+  } else {
+    // recursive step drops the first item
+    // note that we have already checked indices 0 and 1, so we can drop 0
+    return addToTwelve(array.splice(1));
+  }
+};
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

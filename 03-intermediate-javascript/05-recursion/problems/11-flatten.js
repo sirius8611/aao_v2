@@ -10,8 +10,17 @@ flatten([1, 2]); // [1, 2]
 flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
-// your code here
-  
+const flatten = (data) => {
+  if (!Array.isArray(data)) {
+    return data;
+  }
+  let flattened = [];
+  data.forEach((el) => {
+    flattened = flattened.concat(flatten(el));
+  });
+  return flattened;
+};
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = flatten;
