@@ -2,6 +2,10 @@
 // SPIRAL ORDER
 ///////////////////////////////////////////////////////////////////////
 
+// I used a matrix rotation to solve this.
+// To rotate, you'll need to first reverse each row of the matrix, than transpose
+// See ./2d-arrays.md for a visual on why a reverse + transpose = rotate
+
 // used in rotateMatrix
 function reverse(array) {
   let newArr = [];

@@ -1,7 +1,7 @@
 # Web Development Fundamentals
 
-See `html-css-projects/` for a quick overview and comparison of CSS Grid and Flexbox.
+I skipped the JS stuff in this unit, so just HTML/CSS here.
 
-See `css-whack-a-mole` for ideas on using css transitions.
+See `html-css-projects/` for a quick overview and comparison of CSS Grid and Flexbox, and ideas on using css transitions.
 
 See `html-forms` for a demo on HTML/CSS form layout.
