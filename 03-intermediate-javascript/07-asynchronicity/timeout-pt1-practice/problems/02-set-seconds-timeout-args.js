@@ -23,8 +23,17 @@ setSecondsTimeoutArgs(function(arg1, arg2) {
 ***********************************************************************/
 
 function setSecondsTimeoutArgs(cb, delayInSeconds, ...args) {
-  // Your code here
+  return setTimeout(cb, delayInSeconds * 1000, ...args);
 }
+
+setSecondsTimeoutArgs(
+  function (arg1, arg2) {
+    console.log(arg1 + "-" + arg2);
+  },
+  0.7,
+  "hello",
+  "world"
+); // should print 'hello-world' after 700ms
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

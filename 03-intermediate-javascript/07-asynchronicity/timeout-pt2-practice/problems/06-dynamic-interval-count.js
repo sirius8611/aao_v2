@@ -25,7 +25,23 @@ console.log(timeoutObject); // Timeout { ... }
 ***********************************************************************/
 
 function dynamicIntervalCount(cb, delay, amount) {
-  // Your code here
+  const counter = () => {
+    // if amount was passed as arg
+    if (amount >= 0) {
+      amount--;
+      cb();
+      if (amount === 0) {
+        clearInterval(intervalId);
+      }
+    }
+    // if amount not passed as arg, don't count down, just call
+    else {
+      cb();
+    }
+  };
+
+  let intervalId = setInterval(counter, delay);
+  return intervalId;
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
