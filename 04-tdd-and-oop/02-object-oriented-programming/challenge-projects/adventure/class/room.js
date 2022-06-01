@@ -44,6 +44,15 @@ class Room {
   getItemByName(name) {
     return this.items.find((item) => item.name === name);
   }
+
+  removeItem(item) {
+    const itemIndex = this.items.indexOf(item);
+    return this.items.splice(itemIndex, 1);
+  }
+
+  addItem(item) {
+    this.items.push(item)
+  }
 }
 
 module.exports = { Room };

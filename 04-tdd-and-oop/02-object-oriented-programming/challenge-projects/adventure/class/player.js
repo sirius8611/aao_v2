@@ -30,22 +30,19 @@ class Player {
   }
 
   takeItem(itemName) {
-    const room = this.currentRoom;
-    const roomItemIndex = room.items.indexOf(room.getItemByName(itemName));
-    const takenItem = room.items.splice(roomItemIndex, 1);
-    this.items.push(...takenItem);
+    const room = this.currentRoom
+    const takenItem = room.removeItem(room.getItemByName(itemName))
+    this.addItem(...takenItem);
   }
 
   dropItem(itemName) {
-    const itemIndex = this.items.indexOf(this.getItemByName(itemName));
-    const droppedItem = this.items.splice(itemIndex, 1);
-    this.currentRoom.items.push(...droppedItem);
+    const droppedItem = this.removeItem(this.getItemByName(itemName))
+    this.currentRoom.addItem(...droppedItem);
   }
 
   eatItem(itemName) {
     if (this.getItemByName(itemName).isFood) {
-      let removalIdx = this.items.indexOf(this.getItemByName(itemName));
-      this.items.splice(removalIdx, 1);
+      this.removeItem(this.getItemByName(itemName))
     } else {
       return "That's not food!";
     }
@@ -53,6 +50,15 @@ class Player {
 
   getItemByName(name) {
     return this.items.find((item) => item.name === name);
+  }
+
+  removeItem(item) {
+    const itemIndex = this.items.indexOf(item);
+    return this.items.splice(itemIndex, 1);
+  }
+
+  addItem(item) {
+    this.items.push(item)
   }
 }
 

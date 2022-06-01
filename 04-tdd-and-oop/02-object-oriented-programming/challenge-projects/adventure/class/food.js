@@ -7,8 +7,8 @@ class Food extends Item {
   }
 }
 
-module.exports = { Food };
-// try {
-// } catch {
-//   module.exports = null;
-// }
+try {
+  module.exports = { Food };
+} catch {
+  module.exports = null;
+}
