@@ -37,7 +37,6 @@ class Enemy extends Character {
     const resetCooldown = () => {
       this.cooldown = 0;
       this.act();
-      this.cooldown = 3000;
     };
     setTimeout(() => {
       resetCooldown();
@@ -50,6 +49,7 @@ class Enemy extends Character {
     } else if (this.cooldown > 0) {
       this.rest();
     } else if (this.attackTarget !== null) {
+      // this.cooldown = 3000;
       this.attack();
     } else {
       this.scratchNose();
@@ -61,7 +61,9 @@ class Enemy extends Character {
   attack() {
     console.log(`${this.name} attacks for ${this.strength} damage!`);
     this.attackTarget.applyDamage(this.strength);
+    console.log(this.cooldown);
     this.cooldown = 3000;
+    this.rest();
   }
 
   targetPlayer() {
