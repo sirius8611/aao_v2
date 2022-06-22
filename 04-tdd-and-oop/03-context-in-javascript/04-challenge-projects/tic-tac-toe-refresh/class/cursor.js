@@ -21,37 +21,40 @@ class Cursor {
   }
 
   up() {
-    console.log(this);
+    // console.log(this);
     this.resetBackgroundColor();
     if (this.valid_pos(this.row - 1, this.col)) {
       // Move cursor up
       this.row -= 1;
     }
     this.setBackgroundColor();
+    Screen.render();
   }
 
   down() {
-    console.log(this);
+    // console.log(this);
     this.resetBackgroundColor();
     if (this.valid_pos(this.row + 1, this.col)) {
       // Move cursor down
       this.row += 1;
     }
     this.setBackgroundColor();
+    Screen.render();
   }
 
   left() {
-    console.log(this);
+    // console.log(this);
     this.resetBackgroundColor();
     if (this.valid_pos(this.row, this.col - 1)) {
       // Move cursor left
       this.col -= 1;
     }
     this.setBackgroundColor();
+    Screen.render();
   }
 
   right() {
-    console.log(this);
+    // console.log(this);
     this.resetBackgroundColor();
     if (this.valid_pos(this.row, this.col + 1)) {
       // Move cursor right
@@ -59,6 +62,7 @@ class Cursor {
     }
 
     this.setBackgroundColor();
+    Screen.render();
   }
 
   valid_pos(row, col) {

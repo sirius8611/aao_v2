@@ -42,22 +42,20 @@ class TTT {
       this.cursor.right.bind(this.cursor)
     );
 
-    Screen.addCommand(
-      "O",
-      "adds O to the board",
-      Screen.setGrid(this.cursor.row, this.cursor.col, "O")
-    );
+    Screen.addCommand("o", "adds O to the board", TTT.move.bind(this, "O"));
 
-    Screen.addCommand(
-      "X",
-      "adds X to the board",
-      Screen.setGrid(this.cursor.row, this.cursor.col, "X")
-    );
-
+    Screen.addCommand("x", "adds X to the board", TTT.move.bind(this, "X"));
     Screen.render();
   }
 
-  // static move() {}
+  static move(symbol) {
+    this.grid[this.cursor.row][this.cursor.col] = symbol;
+    Screen.setGrid(this.cursor.row, this.cursor.col, symbol);
+    let isWinner = TTT.checkWin(this.grid);
+    if (isWinner) {
+      TTT.endGame(isWinner);
+    }
+  }
 
   static checkWin(grid) {
     // Return 'X' if player X wins
