@@ -92,7 +92,7 @@ describe ('Connect Four', function () {
 
   it('recognizes ties', function () {
 
-
+        
     grid = [['X','O','X','O','X','O','X'],
             ['X','O','X','O','X','O','X'],
             ['O','X','O','X','O','X','O'],
