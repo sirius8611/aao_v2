@@ -31,35 +31,41 @@ class ConnectFour {
       this.cursor.right.bind(this.cursor)
     );
 
+    Screen.addCommand(
+      "x",
+      "adds X to the board",
+      ConnectFour.move.bind(this, "X")
+    );
+    Screen.addCommand(
+      "o",
+      "adds O to the board",
+      ConnectFour.move.bind(this, "O")
+    );
+
     Screen.render();
   }
 
   static checkWin(grid) {
-    // console.log(grid);
     if (ConnectFour.isEmpty(grid)) {
       return false;
     }
 
     let isRowWin = ConnectFour.rowWin(grid);
     if (isRowWin) {
-      console.log("isRowWin");
       return isRowWin;
     }
 
     let isColWin = ConnectFour.colWin(grid);
     if (isColWin) {
-      console.log("isColWin");
       return isColWin;
     }
 
     let isDiagWin = ConnectFour.diagWin(grid);
     if (isDiagWin) {
-      console.log("isDiagWin");
       return isDiagWin;
     }
 
     let tied = ConnectFour.isFilled(grid);
-    console.log(tied);
     if (tied) {
       return "T";
     }
@@ -67,10 +73,6 @@ class ConnectFour {
     if (ConnectFour.anyEmpty(grid)) {
       return false;
     }
-    // Return 'X' if player X wins
-    // Return 'O' if player O wins
-    // Return 'T' if the game is a tie
-    // Return false if the game has not ended
   }
 
   static endGame(winner) {
@@ -85,11 +87,34 @@ class ConnectFour {
     Screen.quit();
   }
 
+  static move(symbol) {
+    let row = ConnectFour.topRowInCol(this.grid, this.cursor.col);
+
+    this.grid[row][this.cursor.col] = symbol;
+
+    Screen.setGrid(row, this.cursor.col, symbol);
+
+    let isWinner = ConnectFour.checkWin(this.grid);
+    if (isWinner) {
+      ConnectFour.endGame(isWinner);
+    }
+  }
+
+  static topRowInCol(grid, col) {
+    const column = ConnectFour.transpose(grid)[col].reverse();
+    for (let i = 0; i < column.length; i++) {
+      if (column[i] === " ") {
+        return column.length - 1 - i;
+      }
+    }
+    return false;
+  }
+
   static rowWin(grid) {
     for (let row = 0; row < grid.length; row++) {
-      let fourInARow = ConnectFour.fourInARow(grid[row]);
-      if (fourInARow) {
-        return fourInARow;
+      let allFour = ConnectFour.fourInARow(grid[row]);
+      if (allFour === "O" || allFour === "X") {
+        return allFour;
       }
     }
     return false;
@@ -159,7 +184,22 @@ class ConnectFour {
   }
 
   static fourInARow(arr) {
-    arr.forEach((el) => {});
+    let first = 0;
+    let count = 1;
+    let next = first + 1;
+
+    while (next < arr.length) {
+      if (arr[first] === arr[next] && arr[first] != " ") {
+        count++;
+        if (count >= 4) {
+          return arr[first];
+        }
+      } else {
+        first = next;
+        count = 1;
+      }
+      next++;
+    }
     return false;
   }
 
