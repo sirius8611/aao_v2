@@ -38,8 +38,13 @@ class Player extends Character {
   }
 
   eatItem(itemName) {
-    if (this.getItemByName(itemName).isFood) {
-      this.removeItem(this.getItemByName(itemName));
+    let item = this.getItemByName(itemName);
+    if (item.isFood) {
+      this.removeItem(item);
+      // add check for potion, then use potion
+      if (item.isPotion) {
+        this.health += item.healthBoost;
+      }
     } else {
       return "That's not food!";
     }
