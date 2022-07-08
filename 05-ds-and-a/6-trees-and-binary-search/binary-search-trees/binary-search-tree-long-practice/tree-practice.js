@@ -83,28 +83,53 @@ function balancedTree(rootNode) {
 }
 
 function getParentNode(rootNode, target) {
-  // let parentNode = null;
-  // let stack = [rootNode];
-  // while (stack.length) {
-  //   let node = stack.shift();
-  //   if (node.val !== target) {
-  //     parentNode = node;
-  //   } else {
-  //     return parentNode;
-  //   }
-  //   if (node.left) stack.push(node.left);
-  //   if (node.right) stack.push(node.right);
-  // }
-  // return undefined;
+  let stack = [rootNode];
+  if (rootNode.val === target) {
+    return null;
+  }
+  while (stack.length) {
+    let node = stack.pop();
+
+    if (node.left && node.left.val === target) {
+      return node;
+    }
+
+    if (node.right && node.right.val === target) {
+      return node;
+    }
+
+    if (node.right) stack.push(node.right);
+    if (node.left) stack.push(node.left);
+  }
+  return undefined;
 }
 
 function inOrderPredecessor(rootNode, target) {
-  // Your code here
+  let stack = [rootNode];
+  let node = rootNode;
+  let predecessor = null;
+
+  while (stack.length > 0) {
+    if (node !== null) {
+      stack.push(node);
+      node = node.left;
+    } else {
+      node = stack.pop();
+      if (target === node.val) {
+        return predecessor.val;
+      }
+      predecessor = node;
+      node = node.right;
+    }
+  }
+  return undefined;
 }
 
 function deleteNodeBST(rootNode, target) {
   // Do a traversal to find the node. Keep track of the parent
+  let parent = getParentNode(rootNode, target);
   // Undefined if the target cannot be found
+
   // Set target based on parent
   // Case 0: Zero children and no parent:
   //   return null
@@ -114,7 +139,37 @@ function deleteNodeBST(rootNode, target) {
   //   set the value to its in-order predecessor, then delete the predecessor
   // Case 3: One child:
   //   Make the parent point to the child
+
+  if (!rootNode) return;
+
+  if (rootNode.val === target) {
+    if (!rootNode.left && !rootNode.right) {
+      return null;
+    }
+
+    if (!rootNode.left && rootNode.right) {
+      return rootNode.right;
+    }
+    if (rootNode.left && !rootNode.right) {
+      return rootNode.left;
+    }
+  } else if (rootNode.val > target) {
+    rootNode.left = deleteNodeBST(rootNode.left, target);
+  } else {
+    rootNode.right = deleteNodeBST(rootNode.right, target);
+  }
+  return rootNode;
 }
+
+// let bstRoot = new TreeNode(4);
+// bstRoot.left = new TreeNode(2);
+// bstRoot.left.left = new TreeNode(1);
+// bstRoot.left.right = new TreeNode(3);
+// bstRoot.right = new TreeNode(6);
+// bstRoot.right.left = new TreeNode(5);
+// bstRoot.right.right = new TreeNode(7);
+
+// console.log(inOrderPredecessor(bstRoot, 3));
 
 module.exports = {
   findMinBST,
